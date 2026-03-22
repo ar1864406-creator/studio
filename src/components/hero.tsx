@@ -2,8 +2,14 @@
 'use client';
 
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
-import Antigravity from './antigravity';
+
+// Dynamically import Antigravity with SSR disabled to prevent React 19 reconciler errors during server render
+const Antigravity = dynamic(() => import('./antigravity'), { 
+  ssr: false,
+  loading: () => <div className="absolute inset-0 bg-background" />
+});
 
 export function Hero() {
   return (

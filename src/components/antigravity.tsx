@@ -3,8 +3,7 @@
 /* eslint-disable react/no-unknown-property */
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useMemo, useRef } from 'react';
-import * as THREE from 'this'; // Error in provided snippet, should be 'three'
-import * as THREE_LIB from 'three';
+import * as THREE from 'three';
 
 interface AntigravityProps {
   count?: number;
@@ -41,9 +40,9 @@ const AntigravityInner = ({
   particleShape = 'capsule',
   fieldStrength = 10
 }: AntigravityProps) => {
-  const meshRef = useRef<THREE_LIB.InstancedMesh>(null);
+  const meshRef = useRef<THREE.InstancedMesh>(null);
   const { viewport } = useThree();
-  const dummy = useMemo(() => new THREE_LIB.Object3D(), []);
+  const dummy = useMemo(() => new THREE.Object3D(), []);
 
   const lastMousePos = useRef({ x: 0, y: 0 });
   const lastMouseMoveTime = useRef(0);
@@ -178,7 +177,7 @@ const AntigravityInner = ({
   );
 };
 
-const Antigravity = (props: AntigravityProps) => {
+export default function Antigravity(props: AntigravityProps) {
   return (
     <div style={{ width: '100%', height: '100%', position: 'absolute', inset: 0 }}>
       <Canvas camera={{ position: [0, 0, 50], fov: 35 }}>
@@ -186,6 +185,4 @@ const Antigravity = (props: AntigravityProps) => {
       </Canvas>
     </div>
   );
-};
-
-export default Antigravity;
+}
