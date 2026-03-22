@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Menu, Search, ShoppingBag } from 'lucide-react';
+import { Menu } from 'lucide-react';
 
 export function Navbar() {
   return (
@@ -21,12 +21,6 @@ export function Navbar() {
 
         <div className="flex items-center gap-6">
           <Link href="#about" className="hidden lg:block text-xs tracking-[0.2em] uppercase hover:text-primary transition-colors">Our Story</Link>
-          <button className="text-foreground hover:text-primary transition-colors p-2 glass rounded-full">
-            <Search className="w-4 h-4" />
-          </button>
-          <button className="text-foreground hover:text-primary transition-colors p-2 glass rounded-full">
-            <ShoppingBag className="w-4 h-4" />
-          </button>
         </div>
       </div>
     </nav>
