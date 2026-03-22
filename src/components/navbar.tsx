@@ -7,7 +7,7 @@ export function Navbar() {
       <div className="container mx-auto h-20 glass rounded-full flex items-center justify-between px-10 relative">
         {/* Left: Brand Logo */}
         <div className="flex items-center">
-          <Link href="/" className="font-headline text-lg md:text-xl font-black tracking-[0.3em] text-foreground uppercase whitespace-nowrap transition-colors hover:text-primary">
+          <Link href="/" className="font-headline text-lg md:text-xl font-black tracking-[0.1em] text-foreground uppercase whitespace-nowrap transition-colors hover:text-primary">
             YS OUTFITTERS
           </Link>
         </div>
