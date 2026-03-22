@@ -8,7 +8,7 @@ export function Navbar() {
         {/* Left: Brand Logo */}
         <div className="flex items-center">
           <Link href="/" className="font-headline text-lg md:text-xl font-black tracking-[0.1em] text-foreground uppercase whitespace-nowrap transition-colors hover:text-primary -translate-y-1.5">
-            YS OUTFITTERS<span className="text-primary animate-blink text-4xl md:text-5xl leading-none inline-block align-baseline ml-0.5">.</span>
+            YS OUTFITTERS<span className="text-primary animate-blink text-4xl md:text-5xl leading-none inline-block align-baseline ml-0.5 drop-shadow-[0_0_15px_rgba(64,138,113,0.8)]">.</span>
           </Link>
         </div>
 
