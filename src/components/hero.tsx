@@ -19,22 +19,24 @@ export function Hero() {
           alt={heroImage.description}
           fill
           priority
-          className="object-cover object-center scale-105 animate-in fade-in duration-1000"
+          className="object-cover object-center scale-105"
           data-ai-hint={heroImage.imageHint}
         />
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
       </div>
 
       {/* Dynamic Animated Glows */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 blur-[150px] rounded-full animate-pulse-glow z-[5]" />
-      <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-accent/10 blur-[120px] rounded-full animate-float z-[5] [animation-delay:2s]" />
 
       {/* Content Layer */}
       <div className="relative z-10 container mx-auto px-6 text-center">
         <div className="max-w-4xl mx-auto space-y-12">
           <div className="animate-float">
-            <h1 className="font-headline text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight text-white drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)] leading-tight">
-              YS OUTFITTERS
+            <h1 className="font-headline text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight text-white leading-tight">
+              <span className="block opacity-80 mb-2">YS</span>
+              <span className="bg-gradient-to-r from-[#285A48] via-[#B0E4CC] to-[#408A71] bg-clip-text text-transparent animate-gradient-x">
+                OUTFITTERS
+              </span>
             </h1>
           </div>
           
@@ -46,7 +48,7 @@ export function Hero() {
               <Button
                 asChild
                 size="lg"
-                className="bg-primary/30 backdrop-blur-xl hover:bg-primary/50 text-white border border-white/10 px-12 py-8 rounded-full text-sm uppercase tracking-[0.3em] font-bold transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(var(--primary),0.3)]"
+                className="bg-primary/30 backdrop-blur-xl hover:bg-primary/50 text-white border border-white/10 px-12 py-8 rounded-full text-sm uppercase tracking-[0.3em] font-bold transition-all hover:scale-105"
               >
                 <Link href="#collections">Explore Collection</Link>
               </Button>

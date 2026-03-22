@@ -4,15 +4,15 @@
 
 @layer base {
   :root {
-    --background: 175 38% 6%;
-    --foreground: 152 50% 79%;
+    --background: 175 38% 6%; /* #091413 approx */
+    --foreground: 152 50% 79%; /* #B0E4CC approx */
     --card: 175 38% 8%;
     --card-foreground: 152 50% 79%;
     --popover: 175 38% 6%;
     --popover-foreground: 152 50% 79%;
-    --primary: 160 37% 40%;
+    --primary: 160 37% 40%; /* #408A71 approx */
     --primary-foreground: 152 50% 95%;
-    --secondary: 158 38% 25%;
+    --secondary: 158 38% 25%; /* #285A48 approx */
     --secondary-foreground: 152 50% 90%;
     --muted: 175 20% 15%;
     --muted-foreground: 152 20% 60%;
@@ -36,16 +36,23 @@
   }
 }
 
-.glass {
-  @apply bg-card/40 backdrop-blur-xl border border-white/5 shadow-2xl;
-}
+@layer utilities {
+  .glass {
+    @apply bg-card/40 backdrop-blur-xl border border-white/5 shadow-2xl;
+  }
 
-.glass-dark {
-  @apply bg-black/40 backdrop-blur-xl border border-white/5 shadow-2xl;
-}
+  .glass-dark {
+    @apply bg-black/40 backdrop-blur-xl border border-white/5 shadow-2xl;
+  }
 
-.glass-primary {
-  @apply bg-primary/20 backdrop-blur-xl border border-white/10 shadow-2xl;
+  .glass-primary {
+    @apply bg-primary/20 backdrop-blur-xl border border-white/10 shadow-2xl;
+  }
+
+  .animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradient-x 8s ease infinite;
+  }
 }
 
 .font-headline {
@@ -58,4 +65,44 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+@keyframes gradient-x {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1) translate(-50%, -50%);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2) translate(-40%, -40%);
+  }
 }
