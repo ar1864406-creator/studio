@@ -1,24 +1,36 @@
+
 'use client';
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import Antigravity from './antigravity';
 
 export function Hero() {
   return (
     <section className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-background">
-      {/* Live Moving Background Layer */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        {/* Large drifting orbs with different animations and delays */}
-        <div className="absolute top-[-10%] left-[-10%] w-[80vw] h-[80vw] bg-primary/10 blur-[150px] rounded-full animate-pulse-glow mix-blend-screen" />
-        <div className="absolute bottom-[-20%] right-[-10%] w-[70vw] h-[70vw] bg-secondary/20 blur-[180px] rounded-full animate-pulse-glow [animation-delay:3s] mix-blend-screen" />
-        <div className="absolute top-[20%] right-[10%] w-[50vw] h-[50vw] bg-primary/5 blur-[120px] rounded-full animate-float [animation-duration:12s] mix-blend-screen" />
-        <div className="absolute bottom-[20%] left-[10%] w-[60vw] h-[60vw] bg-accent/10 blur-[140px] rounded-full animate-float [animation-duration:15s] [animation-delay:2s] mix-blend-screen" />
-        
-        {/* Subtle noise overlay could go here if desired */}
+      {/* Interactive Antigravity Background */}
+      <div className="absolute inset-0 z-0">
+        <Antigravity
+          count={500}
+          magnetRadius={6}
+          ringRadius={7}
+          waveSpeed={0.4}
+          waveAmplitude={1}
+          particleSize={1.5}
+          lerpSpeed={0.05}
+          color="#51b896"
+          autoAnimate
+          particleVariance={1}
+          rotationSpeed={0}
+          depthFactor={1}
+          pulseSpeed={3}
+          particleShape="capsule"
+          fieldStrength={10}
+        />
       </div>
 
-      {/* Dark overlay for text clarity */}
-      <div className="absolute inset-0 z-[1] bg-black/40 backdrop-blur-[2px]" />
+      {/* Layer for extra depth/gradient clarity */}
+      <div className="absolute inset-0 z-[1] bg-black/40 backdrop-blur-[1px] pointer-events-none" />
 
       {/* Content Layer */}
       <div className="relative z-10 container mx-auto px-6 text-center">
