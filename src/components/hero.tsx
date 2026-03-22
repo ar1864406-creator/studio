@@ -35,7 +35,7 @@ export function Hero() {
           <Button
             asChild
             size="lg"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground px-12 py-8 rounded-none text-base uppercase tracking-widest transition-all hover:scale-105"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground px-12 py-8 rounded-full text-base uppercase tracking-widest transition-all hover:scale-105"
           >
             <Link href="#collections">Explore Collection</Link>
           </Button>
