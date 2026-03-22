@@ -1,4 +1,3 @@
-
 import Image from 'next/image';
 import { Instagram } from 'lucide-react';
 import { PlaceHolderImages } from '@/app/lib/placeholder-images';
@@ -11,6 +10,8 @@ const galleryItems = [
 ];
 
 export function Gallery() {
+  const images = PlaceHolderImages || [];
+
   return (
     <section className="py-24 bg-background">
       <div className="container mx-auto px-6 text-center mb-12">
@@ -23,7 +24,8 @@ export function Gallery() {
 
       <div className="grid grid-cols-2 md:grid-cols-4">
         {galleryItems.map((item) => {
-          const img = PlaceHolderImages.find(i => i.id === item.id)!;
+          const img = images.find(i => i.id === item.id) || images[0];
+          if (!img) return null;
           return (
             <div key={item.id} className="relative aspect-square group overflow-hidden">
               <Image

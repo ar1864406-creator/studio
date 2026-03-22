@@ -1,9 +1,10 @@
-
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/app/lib/placeholder-images';
 
 export function About() {
-  const lifestyleImg = PlaceHolderImages.find(img => img.id === 'about-lifestyle')!;
+  const lifestyleImg = (PlaceHolderImages || []).find(img => img.id === 'about-lifestyle') || (PlaceHolderImages || [])[0];
+
+  if (!lifestyleImg) return null;
 
   return (
     <section id="about" className="py-24 overflow-hidden">

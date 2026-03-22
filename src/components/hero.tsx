@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/app/lib/placeholder-images';
 
 export function Hero() {
-  const heroImage = PlaceHolderImages.find(img => img.id === 'hero-model') || {
+  const heroImage = (PlaceHolderImages || []).find(img => img.id === 'hero-model') || {
     imageUrl: 'https://picsum.photos/seed/fashion-hero/1920/1080',
     description: 'Fashion Hero',
     imageHint: 'fashion model'

@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { Facebook, Twitter, Instagram, ArrowUp } from 'lucide-react';
+import React from 'react';
 
 export function Footer() {
   const scrollToTop = () => {

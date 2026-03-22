@@ -4,8 +4,13 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { MapPin, Phone, Mail, MessageSquare } from 'lucide-react';
+import React from 'react';
 
 export function Contact() {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+  };
+
   return (
     <section id="contact" className="py-24 bg-card">
       <div className="container mx-auto px-6">
@@ -64,7 +69,7 @@ export function Contact() {
 
           <div className="bg-background p-8 lg:p-12 border border-border shadow-2xl relative">
             <h3 className="font-headline text-2xl font-bold mb-8">Send an Inquiry</h3>
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label className="text-[10px] uppercase tracking-widest text-muted-foreground">Full Name</label>

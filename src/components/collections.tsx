@@ -1,4 +1,3 @@
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { PlaceHolderImages } from '@/app/lib/placeholder-images';
@@ -11,6 +10,8 @@ const categories = [
 ];
 
 export function Collections() {
+  const images = PlaceHolderImages || [];
+  
   return (
     <section id="collections" className="py-24 bg-background">
       <div className="container mx-auto px-6">
@@ -26,7 +27,7 @@ export function Collections() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {categories.map((cat) => {
-            const img = PlaceHolderImages.find(i => i.id === cat.id)!;
+            const img = images.find(i => i.id === cat.id) || images[0];
             return (
               <Link
                 key={cat.id}
