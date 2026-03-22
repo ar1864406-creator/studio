@@ -17,7 +17,7 @@ export function Collections() {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
           <div>
-            <span className="text-primary text-sm uppercase tracking-[0.3em] font-bold mb-4 block">Categories</span>
+            <span className="text-primary text-sm uppercase tracking-[0.3em] font-bold mb-4 block animate-breath-glow">Categories</span>
             <h2 className="font-headline text-4xl md:text-6xl font-bold">The Collections</h2>
           </div>
           <p className="max-w-md text-muted-foreground">
