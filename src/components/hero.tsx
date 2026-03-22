@@ -23,9 +23,12 @@ export function Hero() {
             data-ai-hint={heroImg.imageHint}
           />
           {/* Subtle overlay for luxury feel and text readability */}
-          <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]" />
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px]" />
         </div>
       )}
+
+      {/* Animated Gradient Overlay for Luxury Depth */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-tr from-primary/20 via-transparent to-secondary/30 animate-gradient-x opacity-60 pointer-events-none" />
 
       {/* Content Layer */}
       <div className="relative z-10 container mx-auto px-6 text-center">
