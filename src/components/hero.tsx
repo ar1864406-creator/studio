@@ -45,13 +45,19 @@ export function Hero() {
               Redefining Everyday Style
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
-              <Button
-                asChild
-                size="lg"
-                className="bg-primary/30 backdrop-blur-xl hover:bg-primary/50 text-white border border-white/10 px-12 py-8 rounded-full text-sm uppercase tracking-[0.3em] font-bold transition-all hover:scale-105"
-              >
-                <Link href="#collections">Explore Collection</Link>
-              </Button>
+              {/* Moving Border Animation Wrapper */}
+              <div className="relative group p-[2px] rounded-full overflow-hidden transition-all hover:scale-105 active:scale-95 shadow-2xl">
+                {/* The Rotating Gradient Background (Border) */}
+                <div className="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#B0E4CC_0%,#408A71_50%,#B0E4CC_100%)] opacity-80 group-hover:opacity-100 transition-opacity" />
+                
+                <Button
+                  asChild
+                  size="lg"
+                  className="relative bg-background/90 backdrop-blur-xl hover:bg-background/80 text-white border-none px-12 py-8 rounded-full text-sm uppercase tracking-[0.3em] font-bold transition-all"
+                >
+                  <Link href="#collections">Explore Collection</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
