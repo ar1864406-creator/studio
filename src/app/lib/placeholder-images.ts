@@ -23,9 +23,9 @@ export const PlaceHolderImages: ImagePlaceholder[] = (data as any).placeholderIm
   },
   {
     "id": "collection-casual",
-    "description": "Minimalist casual aesthetic",
-    "imageUrl": "https://picsum.photos/seed/casual-fashion/800/1200",
-    "imageHint": "minimalist fashion casual"
+    "description": "Minimalist casual chic style",
+    "imageUrl": "/Essential-Fashion-Items-For-Men-To-Create-A-Casual-Chic-Style-Main-Image.jpg",
+    "imageHint": "casual chic fashion"
   },
   {
     "id": "collection-streetwear",
