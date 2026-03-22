@@ -6,12 +6,19 @@ import { Button } from '@/components/ui/button';
 export function Hero() {
   return (
     <section className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-background">
-      {/* Background atmosphere */}
-      <div className="absolute inset-0 z-0 bg-black/40" />
+      {/* Live Moving Background Layer */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        {/* Large drifting orbs with different animations and delays */}
+        <div className="absolute top-[-10%] left-[-10%] w-[80vw] h-[80vw] bg-primary/10 blur-[150px] rounded-full animate-pulse-glow mix-blend-screen" />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[70vw] h-[70vw] bg-secondary/20 blur-[180px] rounded-full animate-pulse-glow [animation-delay:3s] mix-blend-screen" />
+        <div className="absolute top-[20%] right-[10%] w-[50vw] h-[50vw] bg-primary/5 blur-[120px] rounded-full animate-float [animation-duration:12s] mix-blend-screen" />
+        <div className="absolute bottom-[20%] left-[10%] w-[60vw] h-[60vw] bg-accent/10 blur-[140px] rounded-full animate-float [animation-duration:15s] [animation-delay:2s] mix-blend-screen" />
+        
+        {/* Subtle noise overlay could go here if desired */}
+      </div>
 
-      {/* Dynamic Animated Glows to replace image depth */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 blur-[150px] rounded-full animate-pulse-glow z-[5]" />
-      <div className="absolute -top-24 -right-24 w-[500px] h-[500px] bg-secondary/10 blur-[120px] rounded-full animate-pulse-glow z-[4]" />
+      {/* Dark overlay for text clarity */}
+      <div className="absolute inset-0 z-[1] bg-black/40 backdrop-blur-[2px]" />
 
       {/* Content Layer */}
       <div className="relative z-10 container mx-auto px-6 text-center">
