@@ -8,7 +8,7 @@ export function Navbar() {
         {/* Left: Brand Logo */}
         <div className="flex items-center">
           <Link href="/" className="font-headline text-lg md:text-xl font-black tracking-[0.1em] text-foreground uppercase whitespace-nowrap transition-colors hover:text-primary">
-            YS OUTFITTERS
+            YS OUTFITTERS<span className="text-primary animate-blink">.</span>
           </Link>
         </div>
 
@@ -31,6 +31,7 @@ export function Navbar() {
         {/* Right: Mobile Menu Button / Actions */}
         <div className="flex items-center">
           <button className="lg:hidden text-foreground hover:text-primary transition-colors p-2 glass rounded-full">
+            <span className="sr-only">Open Menu</span>
             <Menu className="w-5 h-5" />
           </button>
           {/* Spacer for desktop balance or potential action buttons */}
