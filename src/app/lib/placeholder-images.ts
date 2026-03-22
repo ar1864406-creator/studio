@@ -18,8 +18,8 @@ export const PlaceHolderImages: ImagePlaceholder[] = (data as any).placeholderIm
   {
     "id": "collection-men",
     "description": "Sophisticated menswear portrait",
-    "imageUrl": "/S22a1d4081b2644d296f25a235ef2176b6",
-    "imageHint": "men fashion editorial"
+    "imageUrl": "/Flannel_shirt___Types_of_shirts_for_men___AFRAZ_480x480.webp",
+    "imageHint": "men fashion flannel"
   },
   {
     "id": "collection-casual",
