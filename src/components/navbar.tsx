@@ -23,11 +23,11 @@ export function Navbar() {
     };
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
+      for (const entry of entries) {
         if (entry.isIntersecting) {
           setActiveSection(entry.target.id);
         }
-      });
+      }
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
@@ -42,7 +42,7 @@ export function Navbar() {
         setActiveSection('');
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
       observer.disconnect();
@@ -54,9 +54,9 @@ export function Navbar() {
     return navLinks.findIndex(link => link.id === activeSection);
   }, [activeSection]);
 
-  // Using a standardized width for links (112px / w-28) and step (112px + 4px gap = 116px)
-  const ITEM_WIDTH = 112;
-  const GAP = 4;
+  // Precise measurements for the sliding highlight
+  const ITEM_WIDTH = 112; // w-28
+  const GAP = 4; // gap-1
   const STEP = ITEM_WIDTH + GAP;
 
   return (
@@ -72,18 +72,19 @@ export function Navbar() {
           </Link>
         </div>
 
-        {/* Center: Navigation Links (Desktop) with Sliding Highlight */}
+        {/* Center: Navigation Links with GPU-Accelerated Sliding Highlight */}
         <div className="hidden lg:flex items-center absolute left-1/2 -translate-x-1/2 p-1.5 glass-dark rounded-full overflow-hidden">
           <div className="relative flex items-center gap-1">
-            {/* Sliding White Box Highlight */}
+            {/* Sliding White Box Highlight (GPU Accelerated) */}
             <div 
               className={cn(
-                "absolute h-full rounded-full bg-white shadow-[0_0_25px_rgba(255,255,255,0.4)] transition-all duration-500 ease-in-out z-0",
-                activeIndex === -1 ? "opacity-0 scale-95" : "opacity-100 scale-100"
+                "absolute h-full rounded-full bg-white shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] z-0",
+                activeIndex === -1 ? "opacity-0 scale-90" : "opacity-100 scale-100"
               )}
               style={{
                 width: `${ITEM_WIDTH}px`,
-                left: activeIndex !== -1 ? `${activeIndex * STEP}px` : '0px',
+                transform: `translate3d(${activeIndex !== -1 ? activeIndex * STEP : 0}px, 0, 0)`,
+                willChange: 'transform'
               }}
             />
             
@@ -92,7 +93,7 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "relative z-10 text-[9px] tracking-[0.3em] uppercase transition-colors duration-500 px-6 py-2.5 rounded-full flex items-center justify-center w-28",
+                  "relative z-10 text-[9px] tracking-[0.3em] uppercase transition-colors duration-300 px-6 py-2.5 rounded-full flex items-center justify-center w-28",
                   activeSection === link.id 
                     ? "text-background font-black" 
                     : "text-foreground/70 hover:text-white"
@@ -104,7 +105,7 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* Right: Mobile Menu Button / Actions */}
+        {/* Right: Mobile Menu / Spacer */}
         <div className="flex items-center">
           <button className="lg:hidden text-foreground hover:text-primary transition-colors p-2 glass rounded-full">
             <span className="sr-only">Open Menu</span>

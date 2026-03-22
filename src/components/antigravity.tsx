@@ -1,4 +1,3 @@
-
 'use client';
 /* eslint-disable react/no-unknown-property */
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
@@ -84,20 +83,20 @@ const AntigravityInner = ({
 
     const { viewport: v, pointer: m } = state;
 
-    const mouseDist = Math.sqrt(Math.pow(m.x - lastMousePos.current.x, 2) + Math.pow(m.y - lastMousePos.current.y, 2));
+    const mouseDistSq = Math.pow(m.x - lastMousePos.current.x, 2) + Math.pow(m.y - lastMousePos.current.y, 2);
 
-    if (mouseDist > 0.001) {
+    if (mouseDistSq > 0.000001) {
       lastMouseMoveTime.current = Date.now();
       lastMousePos.current = { x: m.x, y: m.y };
     }
 
-    let destX = (m.x * v.width) / 2;
-    let destY = (m.y * v.height) / 2;
+    let destX = (m.x * v.width) * 0.5;
+    let destY = (m.y * v.height) * 0.5;
 
     if (autoAnimate && Date.now() - lastMouseMoveTime.current > 2000) {
       const time = state.clock.getElapsedTime();
-      destX = Math.sin(time * 0.5) * (v.width / 4);
-      destY = Math.cos(time * 0.5 * 2) * (v.height / 4);
+      destX = Math.sin(time * 0.5) * (v.width * 0.25);
+      destY = Math.cos(time * 0.5 * 2) * (v.height * 0.25);
     }
 
     const smoothFactor = 0.05;
@@ -106,13 +105,15 @@ const AntigravityInner = ({
 
     const targetX = virtualMouse.current.x;
     const targetY = virtualMouse.current.y;
-
     const globalRotation = state.clock.getElapsedTime() * rotationSpeed;
+    const magnetRadiusSq = magnetRadius * magnetRadius;
 
-    particles.forEach((particle, i) => {
+    for (let i = 0; i < count; i++) {
+      const particle = particles[i];
       let { t, speed, mx, my, mz, cz, randomRadiusOffset } = particle;
 
-      t = particle.t += speed / 2;
+      particle.t += speed * 0.5;
+      const currentT = particle.t;
 
       const projectionFactor = 1 - cz / 50;
       const projectedTargetX = targetX * projectionFactor;
@@ -120,21 +121,19 @@ const AntigravityInner = ({
 
       const dx = mx - projectedTargetX;
       const dy = my - projectedTargetY;
-      const dist = Math.sqrt(dx * dx + dy * dy);
+      const distSq = dx * dx + dy * dy;
 
       const targetPos = { x: mx, y: my, z: mz * depthFactor };
 
-      if (dist < magnetRadius) {
+      if (distSq < magnetRadiusSq) {
         const angle = Math.atan2(dy, dx) + globalRotation;
-
-        const wave = Math.sin(t * waveSpeed + angle) * (0.5 * waveAmplitude);
+        const wave = Math.sin(currentT * waveSpeed + angle) * (0.5 * waveAmplitude);
         const deviation = randomRadiusOffset * (5 / (fieldStrength + 0.1));
-
         const currentRingRadius = ringRadius + wave + deviation;
 
         targetPos.x = projectedTargetX + currentRingRadius * Math.cos(angle);
         targetPos.y = projectedTargetY + currentRingRadius * Math.sin(angle);
-        targetPos.z = mz * depthFactor + Math.sin(t) * (1 * waveAmplitude * depthFactor);
+        targetPos.z = mz * depthFactor + Math.sin(currentT) * (1 * waveAmplitude * depthFactor);
       }
 
       particle.cx += (targetPos.x - particle.cx) * lerpSpeed;
@@ -142,26 +141,21 @@ const AntigravityInner = ({
       particle.cz += (targetPos.z - particle.cz) * lerpSpeed;
 
       dummy.position.set(particle.cx, particle.cy, particle.cz);
-
       dummy.lookAt(projectedTargetX, projectedTargetY, particle.cz);
-      dummy.rotateX(Math.PI / 2);
+      dummy.rotateX(Math.PI * 0.5);
 
-      const currentDistToMouse = Math.sqrt(
-        Math.pow(particle.cx - projectedTargetX, 2) + Math.pow(particle.cy - projectedTargetY, 2)
-      );
-
-      const distFromRing = Math.abs(currentDistToMouse - ringRadius);
-      let scaleFactor = 1 - distFromRing / 10;
-
-      scaleFactor = Math.max(0, Math.min(1, scaleFactor));
-
-      const finalScale = scaleFactor * (0.8 + Math.sin(t * pulseSpeed) * 0.2 * particleVariance) * particleSize;
+      const curDx = particle.cx - projectedTargetX;
+      const curDy = particle.cy - projectedTargetY;
+      const currentDist = Math.sqrt(curDx * curDx + curDy * curDy);
+      const distFromRing = Math.abs(currentDist - ringRadius);
+      
+      let scaleFactor = Math.max(0, Math.min(1, 1 - distFromRing / 10));
+      const finalScale = scaleFactor * (0.8 + Math.sin(currentT * pulseSpeed) * 0.2 * particleVariance) * particleSize;
+      
       dummy.scale.set(finalScale, finalScale, finalScale);
-
       dummy.updateMatrix();
-
       mesh.setMatrixAt(i, dummy.matrix);
-    });
+    }
 
     mesh.instanceMatrix.needsUpdate = true;
   });
@@ -180,7 +174,7 @@ const AntigravityInner = ({
 export default function Antigravity(props: AntigravityProps) {
   return (
     <div style={{ width: '100%', height: '100%', position: 'absolute', inset: 0 }}>
-      <Canvas camera={{ position: [0, 0, 50], fov: 35 }}>
+      <Canvas camera={{ position: [0, 0, 50], fov: 35 }} dpr={[1, 2]}>
         <AntigravityInner {...props} />
       </Canvas>
     </div>
