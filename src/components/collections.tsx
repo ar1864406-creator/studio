@@ -16,8 +16,10 @@ export function Collections() {
     <section id="collections" className="py-24 bg-background">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
-          <div>
-            <span className="text-primary text-sm uppercase tracking-[0.3em] font-bold mb-4 block animate-breath-glow">Categories</span>
+          <div className="space-y-4">
+            <div className="inline-block px-5 py-2 glass border-primary/20 rounded-full animate-breath-glow">
+              <span className="text-primary text-[10px] uppercase tracking-[0.4em] font-bold block leading-none">Categories</span>
+            </div>
             <h2 className="font-headline text-4xl md:text-6xl font-bold">The Collections</h2>
           </div>
           <p className="max-w-md text-muted-foreground">
