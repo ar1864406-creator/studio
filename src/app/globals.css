@@ -23,7 +23,7 @@
     --border: 175 20% 15%;
     --input: 175 20% 15%;
     --ring: 160 37% 40%;
-    --radius: 0rem;
+    --radius: 1rem;
   }
 }
 
@@ -34,6 +34,18 @@
   body {
     @apply bg-background text-foreground selection:bg-primary selection:text-primary-foreground;
   }
+}
+
+.glass {
+  @apply bg-card/40 backdrop-blur-xl border border-white/5 shadow-2xl;
+}
+
+.glass-dark {
+  @apply bg-black/40 backdrop-blur-xl border border-white/5 shadow-2xl;
+}
+
+.glass-primary {
+  @apply bg-primary/20 backdrop-blur-xl border border-white/10 shadow-2xl;
 }
 
 .font-headline {

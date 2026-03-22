@@ -52,12 +52,12 @@ export function FeaturedLooks() {
   }, []);
 
   return (
-    <section id="looks" className="py-24 bg-card">
+    <section id="looks" className="py-24 bg-card/20">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <span className="text-primary text-sm uppercase tracking-[0.3em] font-bold mb-4 block">Editorial</span>
           <h2 className="font-headline text-4xl md:text-6xl font-bold mb-6">Featured Looks</h2>
-          <div className="w-24 h-1 bg-primary mx-auto" />
+          <div className="w-24 h-1 bg-primary mx-auto rounded-full" />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -70,8 +70,8 @@ export function FeaturedLooks() {
             const content = aiContent[look.id];
 
             return (
-              <div key={look.id} className="group">
-                <div className="relative h-[500px] mb-8 overflow-hidden">
+              <div key={look.id} className="group glass p-4 rounded-[2.5rem]">
+                <div className="relative h-[500px] mb-8 overflow-hidden rounded-[2rem]">
                   <Image
                     src={img.imageUrl}
                     alt={img.description}
@@ -80,20 +80,20 @@ export function FeaturedLooks() {
                     data-ai-hint={img.imageHint}
                   />
                 </div>
-                <div className="space-y-4">
+                <div className="space-y-4 px-4 pb-4">
                   <h3 className="font-headline text-2xl font-bold">{look.name}</h3>
                   <div className="h-px w-12 bg-primary/40" />
                   {loading ? (
                     <div className="flex items-center gap-2 text-muted-foreground animate-pulse">
                       <Loader2 className="w-4 h-4 animate-spin" />
-                      <span className="text-sm italic">YS Editorial AI crafting insights...</span>
+                      <span className="text-xs italic">YS Editorial AI crafting insights...</span>
                     </div>
                   ) : (
                     <>
-                      <p className="text-foreground/90 font-medium leading-relaxed italic">
+                      <p className="text-foreground/90 font-medium leading-relaxed italic text-sm">
                         "{content?.editorialCaption}"
                       </p>
-                      <p className="text-muted-foreground text-sm">
+                      <p className="text-muted-foreground text-xs uppercase tracking-widest">
                         {content?.conciseDescription}
                       </p>
                     </>

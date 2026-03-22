@@ -12,80 +12,84 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-background pt-24 pb-12 border-t border-border/50">
+    <footer className="bg-background pt-24 pb-12">
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-          <div className="space-y-6">
-            <Link href="/" className="font-headline text-2xl font-bold tracking-[0.2em] text-foreground uppercase">
+        <div className="glass p-12 md:p-20 rounded-[3rem] mb-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
+          <div className="space-y-8">
+            <Link href="/" className="font-headline text-3xl font-black tracking-[0.3em] text-foreground uppercase">
               YS ATELIER
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
               Luxury minimalism for the modern urban dweller. Crafting quality since 2010.
             </p>
             <div className="flex items-center gap-4">
-              <Link href="#" className="w-10 h-10 border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all">
-                <Instagram className="w-4 h-4" />
-              </Link>
-              <Link href="#" className="w-10 h-10 border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all">
-                <Facebook className="w-4 h-4" />
-              </Link>
-              <Link href="#" className="w-10 h-10 border border-border flex items-center justify-center hover:bg-primary hover:text-white transition-all">
-                <Twitter className="w-4 h-4" />
-              </Link>
+              {[Instagram, Facebook, Twitter].map((Icon, i) => (
+                <Link key={i} href="#" className="w-12 h-12 glass flex items-center justify-center rounded-xl hover:bg-primary hover:text-white transition-all">
+                  <Icon className="w-5 h-5" />
+                </Link>
+              ))}
             </div>
           </div>
 
           <div>
-            <h4 className="font-bold text-sm uppercase tracking-[0.2em] mb-8">Navigation</h4>
-            <ul className="space-y-4 text-sm text-muted-foreground">
-              <li><Link href="#collections" className="hover:text-primary transition-colors">Collections</Link></li>
-              <li><Link href="#looks" className="hover:text-primary transition-colors">Featured Looks</Link></li>
-              <li><Link href="#about" className="hover:text-primary transition-colors">Our Story</Link></li>
-              <li><Link href="#contact" className="hover:text-primary transition-colors">Contact</Link></li>
+            <h4 className="font-bold text-xs uppercase tracking-[0.3em] text-primary mb-10">Navigation</h4>
+            <ul className="space-y-5 text-sm text-muted-foreground">
+              {['Collections', 'Featured Looks', 'Our Story', 'Contact'].map((item) => (
+                <li key={item}>
+                  <Link href={`#${item.toLowerCase().replace(' ', '')}`} className="hover:text-primary transition-colors tracking-wide">
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div>
-            <h4 className="font-bold text-sm uppercase tracking-[0.2em] mb-8">Customer Care</h4>
-            <ul className="space-y-4 text-sm text-muted-foreground">
-              <li><Link href="#" className="hover:text-primary transition-colors">Shipping & Returns</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Size Guide</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Atelier Appointments</Link></li>
-              <li><Link href="#" className="hover:text-primary transition-colors">Sustainability</Link></li>
+            <h4 className="font-bold text-xs uppercase tracking-[0.3em] text-primary mb-10">Customer Care</h4>
+            <ul className="space-y-5 text-sm text-muted-foreground">
+              {['Shipping & Returns', 'Size Guide', 'Atelier Appointments', 'Sustainability'].map((item) => (
+                <li key={item}>
+                  <Link href="#" className="hover:text-primary transition-colors tracking-wide">
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          <div>
-            <h4 className="font-bold text-sm uppercase tracking-[0.2em] mb-8">Newsletter</h4>
-            <p className="text-sm text-muted-foreground mb-6">
+          <div className="space-y-8">
+            <h4 className="font-bold text-xs uppercase tracking-[0.3em] text-primary mb-10">Newsletter</h4>
+            <p className="text-sm text-muted-foreground">
               Subscribe to receive exclusive collection updates.
             </p>
-            <div className="flex gap-2">
+            <div className="flex flex-col gap-3">
               <input
                 type="email"
                 placeholder="Email Address"
-                className="bg-card border border-border px-4 py-3 text-sm flex-grow focus:outline-none focus:border-primary"
+                className="glass bg-transparent border-white/5 px-6 py-4 rounded-2xl text-sm focus:outline-none focus:border-primary transition-all"
               />
-              <button className="bg-primary px-6 py-3 text-sm uppercase tracking-widest font-bold">Join</button>
+              <button className="bg-primary/40 hover:bg-primary/60 px-6 py-4 rounded-2xl text-xs uppercase tracking-[0.3em] font-bold transition-all border border-white/10">
+                Join
+              </button>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between pt-12 border-t border-border/50 gap-6">
-          <p className="text-[10px] uppercase tracking-widest text-muted-foreground">
+        <div className="flex flex-col md:flex-row items-center justify-between pt-12 border-t border-white/5 gap-8">
+          <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground/60">
             © {new Date().getFullYear()} YS Outfitters Atelier. All Rights Reserved.
           </p>
-          <div className="flex items-center gap-8 text-[10px] uppercase tracking-widest text-muted-foreground">
+          <div className="flex items-center gap-12 text-[10px] uppercase tracking-[0.3em] text-muted-foreground/60">
             <Link href="#" className="hover:text-primary">Privacy Policy</Link>
             <Link href="#" className="hover:text-primary">Terms of Service</Link>
           </div>
           <button
             onClick={scrollToTop}
-            className="group flex items-center gap-3 text-[10px] uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
+            className="group flex items-center gap-4 text-[10px] uppercase tracking-[0.3em] text-muted-foreground hover:text-primary transition-colors"
           >
             Back to top
-            <div className="w-8 h-8 border border-border flex items-center justify-center group-hover:border-primary">
-              <ArrowUp className="w-3 h-3" />
+            <div className="w-12 h-12 glass flex items-center justify-center rounded-xl group-hover:border-primary transition-all">
+              <ArrowUp className="w-4 h-4" />
             </div>
           </button>
         </div>

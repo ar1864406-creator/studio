@@ -25,14 +25,14 @@ export function Collections() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {categories.map((cat) => {
             const img = images.find(i => i.id === cat.id) || images[0];
             return (
               <Link
                 key={cat.id}
                 href={cat.href}
-                className="group relative h-[600px] overflow-hidden block"
+                className="group relative h-[600px] overflow-hidden block rounded-3xl"
               >
                 <Image
                   src={img.imageUrl}
@@ -42,8 +42,8 @@ export function Collections() {
                   data-ai-hint={img.imageHint}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 transition-opacity group-hover:opacity-80" />
-                <div className="absolute inset-0 flex flex-col justify-end p-8">
-                  <h3 className="font-headline text-3xl font-bold text-white mb-2 transform transition-transform duration-500 group-hover:-translate-y-2">
+                <div className="absolute bottom-6 left-6 right-6 p-6 glass rounded-2xl">
+                  <h3 className="font-headline text-2xl font-bold text-white mb-2 transform transition-transform duration-500 group-hover:-translate-y-1">
                     {cat.title}
                   </h3>
                   <div className="h-1 w-0 bg-primary transition-all duration-500 group-hover:w-full" />
