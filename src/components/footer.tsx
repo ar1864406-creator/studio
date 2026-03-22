@@ -17,7 +17,7 @@ export function Footer() {
         <div className="glass p-12 md:p-20 rounded-[3rem] mb-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16">
           <div className="space-y-8">
             <Link href="/" className="font-headline text-3xl font-black tracking-[0.3em] text-foreground uppercase">
-              YS ATELIER
+              YS OUTFITTERS
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
               Luxury minimalism for the modern urban dweller. Crafting quality since 2010.

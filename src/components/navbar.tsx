@@ -16,7 +16,7 @@ export function Navbar() {
         </div>
 
         <Link href="/" className="font-headline text-xl font-black tracking-[0.3em] text-foreground uppercase">
-          YS ATELIER
+          YS OUTFITTERS
         </Link>
 
         <div className="flex items-center gap-6">
