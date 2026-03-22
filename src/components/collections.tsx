@@ -4,7 +4,6 @@ import { PlaceHolderImages } from '@/app/lib/placeholder-images';
 
 const categories = [
   { id: 'collection-men', title: 'Men', href: '#' },
-  { id: 'collection-women', title: 'Women', href: '#' },
   { id: 'collection-casual', title: 'Casual', href: '#' },
   { id: 'collection-streetwear', title: 'Streetwear', href: '#' },
 ];
@@ -27,7 +26,7 @@ export function Collections() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {categories.map((cat) => {
             const img = images.find(i => i.id === cat.id) || images[0];
             return (

@@ -1,10 +1,9 @@
-
 import type {Metadata} from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
   title: 'YS Atelier | YS Outfitters',
-  description: 'Redefining Everyday Style with premium luxury fashion. Discover our curated collections for men and women.',
+  description: 'Redefining Everyday Style with premium luxury fashion. Discover our curated collections and featured editorial looks.',
 };
 
 export default function RootLayout({
