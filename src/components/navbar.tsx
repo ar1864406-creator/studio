@@ -37,7 +37,6 @@ export function Navbar() {
       if (element) observer.observe(element);
     });
 
-    // Handle scroll to top to clear active section
     const handleScroll = () => {
       if (window.scrollY < 100) {
         setActiveSection('');
@@ -54,6 +53,11 @@ export function Navbar() {
   const activeIndex = useMemo(() => {
     return navLinks.findIndex(link => link.id === activeSection);
   }, [activeSection]);
+
+  // Using a standardized width for links (112px / w-28) and step (112px + 4px gap = 116px)
+  const ITEM_WIDTH = 112;
+  const GAP = 4;
+  const STEP = ITEM_WIDTH + GAP;
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4">
@@ -74,13 +78,12 @@ export function Navbar() {
             {/* Sliding White Box Highlight */}
             <div 
               className={cn(
-                "absolute h-full rounded-full bg-white shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-500 ease-in-out z-0",
+                "absolute h-full rounded-full bg-white shadow-[0_0_25px_rgba(255,255,255,0.4)] transition-all duration-500 ease-in-out z-0",
                 activeIndex === -1 ? "opacity-0 scale-95" : "opacity-100 scale-100"
               )}
               style={{
-                width: '110px',
-                // Calculation: (index * (width + gap)) + initial offset (not needed if using relative positioning inside the same flex container, but here we absolute it)
-                left: activeIndex !== -1 ? `${activeIndex * (110 + 4)}px` : '0px',
+                width: `${ITEM_WIDTH}px`,
+                left: activeIndex !== -1 ? `${activeIndex * STEP}px` : '0px',
               }}
             />
             
@@ -89,7 +92,7 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "relative z-10 text-[9px] tracking-[0.3em] uppercase transition-colors duration-500 px-6 py-2.5 rounded-full flex items-center justify-center min-w-[110px]",
+                  "relative z-10 text-[9px] tracking-[0.3em] uppercase transition-colors duration-500 px-6 py-2.5 rounded-full flex items-center justify-center w-28",
                   activeSection === link.id 
                     ? "text-background font-black" 
                     : "text-foreground/70 hover:text-white"
@@ -107,7 +110,6 @@ export function Navbar() {
             <span className="sr-only">Open Menu</span>
             <Menu className="w-5 h-5" />
           </button>
-          {/* Spacer for desktop balance */}
           <div className="hidden lg:block w-32"></div>
         </div>
       </div>
