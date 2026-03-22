@@ -12,7 +12,7 @@ export const PlaceHolderImages: ImagePlaceholder[] = (data as any).placeholderIm
   {
     "id": "hero-model",
     "description": "High-end fashion model in an urban luxury setting",
-    "imageUrl": "/S22a1d4081b2644d296f25a235ef2176b6",
+    "imageUrl": "/S22a1d4081b2644d296f25a235ef2176b6.webp",
     "imageHint": "fashion model luxury"
   },
   {
@@ -30,7 +30,7 @@ export const PlaceHolderImages: ImagePlaceholder[] = (data as any).placeholderIm
   {
     "id": "collection-streetwear",
     "description": "Modern streetwear look",
-    "imageUrl": "https://picsum.photos/seed/street-fashion/800/1200",
+    "imageUrl": "/S22a1d4081b2644d296f25a235ef2176b6.webp",
     "imageHint": "luxury streetwear fashion"
   }
 ];
