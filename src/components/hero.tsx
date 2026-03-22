@@ -1,34 +1,13 @@
-
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { PlaceHolderImages } from '@/app/lib/placeholder-images';
 
 export function Hero() {
-  const heroImg = PlaceHolderImages.find(img => img.id === 'hero-model');
-
   return (
     <section className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-background">
-      {/* Editorial Background Image */}
-      {heroImg && (
-        <div className="absolute inset-0 z-0">
-          <Image
-            src={heroImg.imageUrl}
-            alt={heroImg.description}
-            fill
-            priority
-            className="object-cover"
-            data-ai-hint={heroImg.imageHint}
-          />
-          {/* Subtle overlay for luxury feel and text readability */}
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-[1px]" />
-        </div>
-      )}
-
       {/* Animated Gradient Overlay for Luxury Depth */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-tr from-primary/20 via-transparent to-secondary/30 animate-gradient-x opacity-60 pointer-events-none" />
+      <div className="absolute inset-0 z-[1] bg-gradient-to-tr from-primary/20 via-transparent to-secondary/30 animate-gradient-x opacity-80 pointer-events-none" />
 
       {/* Content Layer */}
       <div className="relative z-10 container mx-auto px-6 text-center">
