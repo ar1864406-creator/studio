@@ -53,22 +53,20 @@ export function Navbar() {
           </Link>
         </div>
 
-        {/* Center: Navigation Links (Desktop) */}
-        <div className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+        {/* Center: Navigation Links (Desktop) with White Box Scroll Spy */}
+        <div className="hidden lg:flex items-center gap-2 absolute left-1/2 -translate-x-1/2">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               className={cn(
-                "text-[10px] tracking-[0.2em] uppercase transition-all duration-300 relative py-2 group",
-                activeSection === link.id ? "text-primary" : "text-foreground/70 hover:text-primary"
+                "text-[10px] tracking-[0.2em] uppercase transition-all duration-500 px-6 py-2.5 rounded-full flex items-center justify-center min-w-[110px]",
+                activeSection === link.id 
+                  ? "bg-white text-background font-bold shadow-[0_0_15px_rgba(255,255,255,0.2)]" 
+                  : "text-foreground/70 hover:text-white hover:bg-white/5"
               )}
             >
               {link.label}
-              <span className={cn(
-                "absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary transition-all duration-300",
-                activeSection === link.id ? "opacity-100 scale-100" : "opacity-0 scale-0 group-hover:opacity-50 group-hover:scale-75"
-              )} />
             </Link>
           ))}
         </div>
