@@ -25,14 +25,14 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 container mx-auto px-6 h-full flex flex-col justify-center items-center text-center">
-        <div className="glass-dark p-12 md:p-20 rounded-[2.5rem] max-w-4xl space-y-8">
-          <h1 className="font-headline text-5xl md:text-8xl lg:text-9xl font-bold tracking-tight animate-fade-in-up text-white">
-            YS Outfitters
+        <div className="max-w-4xl space-y-8">
+          <h1 className="font-headline text-5xl md:text-8xl lg:text-9xl font-bold tracking-tight animate-fade-in-up text-white drop-shadow-2xl">
+            YS OUTFITTERS
           </h1>
-          <p className="text-sm md:text-lg tracking-[0.5em] uppercase opacity-90 animate-fade-in-up [animation-delay:200ms] text-primary-foreground/80">
+          <p className="text-sm md:text-lg tracking-[0.5em] uppercase opacity-90 animate-fade-in-up [animation-delay:200ms] text-primary-foreground/80 drop-shadow-lg">
             Redefining Everyday Style
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up [animation-delay:400ms]">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up [animation-delay:400ms] pt-8">
             <Button
               asChild
               size="lg"
