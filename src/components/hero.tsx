@@ -1,32 +1,17 @@
-import Image from 'next/image';
+'use client';
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { PlaceHolderImages } from '@/app/lib/placeholder-images';
 
 export function Hero() {
-  const heroImage = (PlaceHolderImages || []).find(img => img.id === 'hero-model') || {
-    imageUrl: 'https://picsum.photos/seed/fashion-hero/1920/1080',
-    description: 'Fashion Hero',
-    imageHint: 'fashion model'
-  };
-
   return (
-    <section className="relative h-screen w-full overflow-hidden flex items-center justify-center">
-      {/* Background Layer */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src={heroImage.imageUrl}
-          alt={heroImage.description}
-          fill
-          priority
-          className="object-cover object-center scale-105"
-          data-ai-hint={heroImage.imageHint}
-        />
-        <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]" />
-      </div>
+    <section className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-background">
+      {/* Background atmosphere */}
+      <div className="absolute inset-0 z-0 bg-black/40" />
 
-      {/* Dynamic Animated Glows */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 blur-[150px] rounded-full animate-pulse-glow z-[5]" />
+      {/* Dynamic Animated Glows to replace image depth */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 blur-[150px] rounded-full animate-pulse-glow z-[5]" />
+      <div className="absolute -top-24 -right-24 w-[500px] h-[500px] bg-secondary/10 blur-[120px] rounded-full animate-pulse-glow z-[4]" />
 
       {/* Content Layer */}
       <div className="relative z-10 container mx-auto px-6 text-center">
