@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
@@ -19,7 +18,7 @@ export function Navbar() {
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: '-20% 0px -70% 0px',
+      rootMargin: '-30% 0px -60% 0px',
       threshold: 0,
     };
 
@@ -38,7 +37,18 @@ export function Navbar() {
       if (element) observer.observe(element);
     });
 
-    return () => observer.disconnect();
+    // Handle scroll to top to clear active section
+    const handleScroll = () => {
+      if (window.scrollY < 100) {
+        setActiveSection('');
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const activeIndex = useMemo(() => {
@@ -52,9 +62,9 @@ export function Navbar() {
         <div className="flex items-center">
           <Link 
             href="/" 
-            className="font-headline text-lg md:text-xl font-black tracking-[0.1em] text-foreground uppercase whitespace-nowrap transition-colors hover:text-primary -translate-y-1.5"
+            className="font-headline text-[10px] md:text-xs font-black tracking-[0.2em] text-foreground uppercase whitespace-nowrap transition-colors hover:text-primary -translate-y-2.5"
           >
-            YS OUTFITTERS<span className="text-primary animate-blink text-4xl md:text-5xl leading-none inline-block align-baseline ml-0.5 drop-shadow-[0_0_25px_rgba(64,138,113,1)] drop-shadow-[0_0_10px_rgba(64,138,113,0.8)]">.</span>
+            YS OUTFITTERS<span className="text-primary animate-blink text-4xl md:text-5xl leading-none inline-block align-baseline ml-1 drop-shadow-[0_0_20px_rgba(64,138,113,1)] drop-shadow-[0_0_8px_rgba(64,138,113,0.6)]">.</span>
           </Link>
         </div>
 
@@ -64,12 +74,13 @@ export function Navbar() {
             {/* Sliding White Box Highlight */}
             <div 
               className={cn(
-                "absolute h-full rounded-full bg-white shadow-[0_0_20px_rgba(255,255,255,0.4)] transition-all duration-500 ease-in-out z-0",
+                "absolute h-full rounded-full bg-white shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-500 ease-in-out z-0",
                 activeIndex === -1 ? "opacity-0 scale-95" : "opacity-100 scale-100"
               )}
               style={{
                 width: '110px',
-                left: activeIndex !== -1 ? `${activeIndex * (110 + 4)}px` : '0px', // 110px width + 4px gap
+                // Calculation: (index * (width + gap)) + initial offset (not needed if using relative positioning inside the same flex container, but here we absolute it)
+                left: activeIndex !== -1 ? `${activeIndex * (110 + 4)}px` : '0px',
               }}
             />
             
@@ -78,9 +89,9 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "relative z-10 text-[10px] tracking-[0.2em] uppercase transition-colors duration-500 px-6 py-2.5 rounded-full flex items-center justify-center min-w-[110px]",
+                  "relative z-10 text-[9px] tracking-[0.3em] uppercase transition-colors duration-500 px-6 py-2.5 rounded-full flex items-center justify-center min-w-[110px]",
                   activeSection === link.id 
-                    ? "text-background font-bold" 
+                    ? "text-background font-black" 
                     : "text-foreground/70 hover:text-white"
                 )}
               >
