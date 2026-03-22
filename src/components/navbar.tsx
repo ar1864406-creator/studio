@@ -11,6 +11,7 @@ export function Navbar() {
           </button>
           <div className="hidden lg:flex items-center gap-8">
             <Link href="#collections" className="text-xs tracking-[0.2em] uppercase hover:text-primary transition-colors">Collections</Link>
+            <Link href="#looks" className="text-xs tracking-[0.2em] uppercase hover:text-primary transition-colors">Editorial</Link>
             <Link href="#looks" className="text-xs tracking-[0.2em] uppercase hover:text-primary transition-colors">Looks</Link>
           </div>
         </div>
