@@ -2,41 +2,30 @@
 'use client';
 
 import Link from 'next/link';
-import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-
-// Dynamically import Antigravity with SSR disabled to prevent React 19 reconciler errors during server render
-const Antigravity = dynamic(() => import('./antigravity'), { 
-  ssr: false,
-  loading: () => <div className="absolute inset-0 bg-background" />
-});
+import { PlaceHolderImages } from '@/app/lib/placeholder-images';
 
 export function Hero() {
+  const heroImg = PlaceHolderImages.find(img => img.id === 'hero-model');
+
   return (
     <section className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-background">
-      {/* Interactive Antigravity Background */}
-      <div className="absolute inset-0 z-0">
-        <Antigravity
-          count={500}
-          magnetRadius={6}
-          ringRadius={7}
-          waveSpeed={0.4}
-          waveAmplitude={1}
-          particleSize={1.5}
-          lerpSpeed={0.05}
-          color="#51b896"
-          autoAnimate
-          particleVariance={1}
-          rotationSpeed={0}
-          depthFactor={1}
-          pulseSpeed={3}
-          particleShape="capsule"
-          fieldStrength={10}
-        />
-      </div>
-
-      {/* Layer for extra depth/gradient clarity */}
-      <div className="absolute inset-0 z-[1] bg-black/40 backdrop-blur-[1px] pointer-events-none" />
+      {/* Editorial Background Image */}
+      {heroImg && (
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={heroImg.imageUrl}
+            alt={heroImg.description}
+            fill
+            priority
+            className="object-cover"
+            data-ai-hint={heroImg.imageHint}
+          />
+          {/* Subtle overlay for luxury feel and text readability */}
+          <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]" />
+        </div>
+      )}
 
       {/* Content Layer */}
       <div className="relative z-10 container mx-auto px-6 text-center">

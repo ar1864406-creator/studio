@@ -4,20 +4,14 @@
     {
       "id": "hero-model",
       "description": "High-end fashion model in an urban luxury setting",
-      "imageUrl": "https://picsum.photos/seed/fashion-hero/1920/1080",
+      "imageUrl": "/S22a1d4081b2644d296f25a235ef2176b6",
       "imageHint": "fashion model luxury"
     },
     {
       "id": "collection-men",
       "description": "Sophisticated menswear portrait",
-      "imageUrl": "https://picsum.photos/seed/men-fashion/800/1200",
+      "imageUrl": "/S22a1d4081b2644d296f25a235ef2176b6",
       "imageHint": "men fashion editorial"
-    },
-    {
-      "id": "collection-women",
-      "description": "Elegant womenswear pose",
-      "imageUrl": "https://picsum.photos/seed/women-fashion/800/1200",
-      "imageHint": "women fashion editorial"
     },
     {
       "id": "collection-casual",
