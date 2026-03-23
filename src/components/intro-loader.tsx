@@ -6,8 +6,14 @@ import { cn } from '@/lib/utils';
 export function IntroLoader() {
   const [isVisible, setIsVisible] = useState(true);
   const [shouldRender, setShouldRender] = useState(true);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    // Start the progress bar growth almost immediately
+    const progressTimer = setTimeout(() => {
+      setProgress(100);
+    }, 100);
+
     const timer = setTimeout(() => {
       setIsVisible(false);
     }, 2500); // Duration of the full intro
@@ -17,6 +23,7 @@ export function IntroLoader() {
     }, 3300); // Duration + fade out time
 
     return () => {
+      clearTimeout(progressTimer);
       clearTimeout(timer);
       clearTimeout(removeTimer);
     };
@@ -32,13 +39,25 @@ export function IntroLoader() {
       )}
     >
       <div className="text-center relative">
+        {/* Background Atmosphere Glow */}
         <div className="absolute inset-0 bg-primary/20 blur-[100px] rounded-full animate-pulse-glow" />
+        
+        {/* Animated Brand Name */}
         <h1 className="relative font-headline text-4xl md:text-7xl font-black tracking-[0.5em] text-white uppercase animate-tracking-in-expand">
           YS OUTFITTERS
         </h1>
-        <div className="mt-4 h-px w-0 bg-primary mx-auto transition-all duration-1000 delay-500 group-data-[state=loading]:w-full animate-breath-glow" 
-             style={{ width: isVisible ? '60%' : '0%' }}
-        />
+        
+        {/* Luxury Loading Bar */}
+        <div className="mt-10 relative h-[1px] w-48 md:w-64 mx-auto overflow-hidden bg-white/5 rounded-full border border-white/5">
+          <div 
+            className="absolute top-0 left-0 h-full bg-primary transition-all duration-[2300ms] ease-in-out shadow-[0_0_20px_rgba(64,138,113,1)]"
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+
+        <p className="mt-4 text-[10px] uppercase tracking-[0.4em] text-primary/40 animate-pulse">
+          Crafting Excellence
+        </p>
       </div>
     </div>
   );
