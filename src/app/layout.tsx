@@ -6,6 +6,8 @@ export const metadata: Metadata = {
   description: 'Redefining Everyday Style with premium luxury fashion. Discover our curated collections and featured editorial looks.',
   icons: {
     icon: '/Gemini_Generated_Image_vlqii7vlqii7vlqi (1).png',
+    shortcut: '/Gemini_Generated_Image_vlqii7vlqii7vlqi (1).png',
+    apple: '/Gemini_Generated_Image_vlqii7vlqii7vlqi (1).png',
   },
 };
 
@@ -17,6 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/Gemini_Generated_Image_vlqii7vlqii7vlqi (1).png" />
+        <link rel="shortcut icon" href="/Gemini_Generated_Image_vlqii7vlqii7vlqi (1).png" />
+        <link rel="apple-touch-icon" href="/Gemini_Generated_Image_vlqii7vlqii7vlqi (1).png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet" />
