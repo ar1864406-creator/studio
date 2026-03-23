@@ -6,8 +6,18 @@ import { Button } from '@/components/ui/button';
 export function Hero() {
   return (
     <section className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-background">
-      {/* Animated Gradient Overlay for Luxury Depth */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-tr from-primary/20 via-transparent to-secondary/30 animate-gradient-x opacity-80 pointer-events-none" />
+      {/* Cinematic Flowing Gradient Background */}
+      <div 
+        className="absolute inset-0 z-0 animate-gradient-flow opacity-40 transition-opacity duration-1000"
+        style={{
+          background: 'linear-gradient(-45deg, #1A3C34, #285A48, #0D1F1A, #408A71)',
+          backgroundSize: '400% 400%'
+        }}
+      />
+
+      {/* Subtle Light Leak Effect */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/10 blur-[150px] rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/10 blur-[120px] rounded-full translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
       {/* Content Layer */}
       <div className="relative z-10 container mx-auto px-6 text-center">
@@ -15,7 +25,7 @@ export function Hero() {
           <div className="animate-float">
             <h1 className="font-headline text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight text-white leading-tight">
               <span className="block opacity-80 mb-2">YS</span>
-              <span className="bg-gradient-to-r from-[#285A48] via-[#B0E4CC] to-[#408A71] bg-clip-text text-transparent animate-gradient-x">
+              <span className="bg-gradient-to-r from-[#B0E4CC] via-white to-[#408A71] bg-clip-text text-transparent drop-shadow-2xl">
                 OUTFITTERS
               </span>
             </h1>

@@ -51,7 +51,12 @@
 
   .animate-gradient-x {
     background-size: 200% 200%;
-    animation: gradient-x 8s ease infinite;
+    animation: gradient-x 15s ease infinite;
+  }
+
+  .animate-gradient-flow {
+    background-size: 400% 400%;
+    animation: gradient-flow 15s ease infinite;
   }
 
   .animate-breath-glow {
@@ -75,6 +80,12 @@ html {
 @keyframes gradient-x {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
+}
+
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 @keyframes fade-in-up {
