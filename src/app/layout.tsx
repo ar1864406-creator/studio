@@ -4,6 +4,9 @@ import './globals.css';
 export const metadata: Metadata = {
   title: 'YS Atelier | YS Outfitters',
   description: 'Redefining Everyday Style with premium luxury fashion. Discover our curated collections and featured editorial looks.',
+  icons: {
+    icon: '/Gemini_Generated_Image_vlqii7vlqii7vlqi (1).png',
+  },
 };
 
 export default function RootLayout({
