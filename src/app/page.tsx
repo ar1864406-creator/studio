@@ -5,10 +5,12 @@ import { CategoryDetail } from '@/components/category-detail';
 import { About } from '@/components/about';
 import { Contact } from '@/components/contact';
 import { Footer } from '@/components/footer';
+import { IntroLoader } from '@/components/intro-loader';
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen relative">
+      <IntroLoader />
       <Navbar />
       <Hero />
       <Collections />

@@ -118,3 +118,34 @@ html {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
+
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.animate-tracking-in-expand {
+  animation: tracking-in-expand 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+}
+
+.animate-intro-fade-out {
+  animation: fade-out 0.8s cubic-bezier(0.550, 0.085, 0.680, 0.530) forwards;
+}
