@@ -7,7 +7,9 @@ import { cn } from '@/lib/utils';
 
 const navLinks = [
   { href: '#collections', label: 'Collections', id: 'collections' },
-  { href: '#looks', label: 'Editorial', id: 'looks' },
+  { href: '#men', label: 'Men', id: 'men' },
+  { href: '#casual', label: 'Casual', id: 'casual' },
+  { href: '#streetwear', label: 'Streetwear', id: 'streetwear' },
   { href: '#about', label: 'Our Story', id: 'about' },
   { href: '#contact', label: 'Contact', id: 'contact' },
 ];
@@ -55,8 +57,8 @@ export function Navbar() {
   }, [activeSection]);
 
   // Precise measurements for the sliding highlight
-  const ITEM_WIDTH = 112; // w-28
-  const GAP = 4; // gap-1
+  const ITEM_WIDTH = 100; // Adjusted for more links
+  const GAP = 4;
   const STEP = ITEM_WIDTH + GAP;
 
   return (
@@ -72,10 +74,9 @@ export function Navbar() {
           </Link>
         </div>
 
-        {/* Center: Navigation Links with GPU-Accelerated Sliding Highlight */}
+        {/* Center: Navigation Links */}
         <div className="hidden lg:flex items-center absolute left-1/2 -translate-x-1/2 p-1.5 glass-dark rounded-full overflow-hidden">
           <div className="relative flex items-center gap-1">
-            {/* Sliding White Box Highlight (GPU Accelerated) */}
             <div 
               className={cn(
                 "absolute h-full rounded-full bg-white shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] z-0",
@@ -93,11 +94,12 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "relative z-10 text-[9px] tracking-[0.3em] uppercase transition-colors duration-300 px-6 py-2.5 rounded-full flex items-center justify-center w-28",
+                  "relative z-10 text-[8px] tracking-[0.2em] uppercase transition-colors duration-300 px-4 py-2.5 rounded-full flex items-center justify-center",
                   activeSection === link.id 
                     ? "text-background font-black" 
                     : "text-foreground/70 hover:text-white"
                 )}
+                style={{ width: `${ITEM_WIDTH}px` }}
               >
                 {link.label}
               </Link>
@@ -105,7 +107,7 @@ export function Navbar() {
           </div>
         </div>
 
-        {/* Right: Mobile Menu / Spacer */}
+        {/* Right: Mobile Menu */}
         <div className="flex items-center">
           <button className="lg:hidden text-foreground hover:text-primary transition-colors p-2 glass rounded-full">
             <span className="sr-only">Open Menu</span>

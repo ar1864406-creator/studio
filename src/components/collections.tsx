@@ -3,9 +3,9 @@ import Link from 'next/link';
 import { PlaceHolderImages } from '@/app/lib/placeholder-images';
 
 const categories = [
-  { id: 'collection-men', title: 'Men', href: '#' },
-  { id: 'collection-casual', title: 'Casual', href: '#' },
-  { id: 'collection-streetwear', title: 'Streetwear', href: '#' },
+  { id: 'collection-men', title: 'Men', href: '#men' },
+  { id: 'collection-casual', title: 'Casual', href: '#casual' },
+  { id: 'collection-streetwear', title: 'Streetwear', href: '#streetwear' },
 ];
 
 export function Collections() {
